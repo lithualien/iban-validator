@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div *ngIf="!isCorrectIBAN" class="alert alert-danger text-center mt-2 pb-0">
+          <h4>Įvyko klaida</h4>
+          <p>Neteisingas IBAN</p>
+        </div>
+        <h3 class="text-center mt-3">IBAN tikrinimo įrankis</h3>
+        <form class="mb-3" (ngSubmit)="onSubmit(f)" (keyup)=(onKeyUp(f)) #f="ngForm">
+            <label for="iban-number">IBAN numeris</label>
+            <input type="text"
+                   id = "iban-number"
+                   class="form-control mb-3"
+                   ngModel
+                   name="number">
+            <button class="btn btn-primary mr-3" type="submit">Pateikti</button>
+            <button class="btn btn-danger" type="button" (click)="clear()">Išvalyti</button>
+        </form>
+        <div *ngIf="isLoading" class="lds-facebook"><div></div><div></div><div></div></div>
+        <app-iban-form *ngIf="isValid && !isLoading" [bank-info]="bankInfo"></app-iban-form>
+      </div>
+    </div>
+</div>

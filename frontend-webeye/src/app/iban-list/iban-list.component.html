@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center mt-3">IBAN sąrašo tikrinimas</h3>
+            <form class="mb-3" (ngSubmit)="onSubmit()" (keyup)="onKeyUp(f)" #f="ngForm">
+                <label for="amount" class="mr-3">Kiekis:</label>
+                <input (keyup)="onKey($event)" (click)="onKey($event)" name="amount" type="number" min="1" max="10" step="1" value="{{ amount }}">
+                <br>
+                <label for="number">IBAN numeriai:</label>
+                <div *ngFor="let number of numbers; let i = index;">
+                    <input type="text"
+                        id = "number"
+                        class="form-control mb-2"
+                        [(ngModel)] = "ibanNumbers[i]"
+                        name="number"
+                        value="ibanNumber[i]">
+                </div>
+                <button class="btn btn-primary mr-3" type="submit">Pateikti</button>
+                <button class="btn btn-danger" type="button" (click)="clear()">Išvalyti</button>
+            </form>
+            <div *ngIf="isLoading" class="lds-facebook"><div></div><div></div><div></div></div>
+            <table *ngIf="isArrayReceived" class="table">
+                <tbody>
+                    <tr *ngFor="let bankInfo of bankInfoArray; let i = index">
+                        <th scope="row">{{ bankInfo.accountNumber }}</th>
+                        <th> {{ getStatus(bankInfo.isValid) }} </th>
+                        <th><a *ngIf="bankInfo.isValid" routerLink="./" fragment="output" (click)="onClick(bankInfo)">Daugiau informacijos</a></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="output">
+                <app-iban-form *ngIf="showForm" [bank-info]="bankInfo"></app-iban-form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table">
+            <tbody>
+                <tr>
+                <th style="width:30%" scope="row">Sąskaitos numeris</th>
+                <td>{{ bankInfo.accountNumber }}</td>
+                </tr>
+                <tr>
+                <th style="width:30%" scope="row">Ar priklauso SEB Bankui?</th>
+                <td>{{ isSeb() }}</td>
+                </tr>
+                <tr>
+                <th style="width:30%" scope="row">Institucijos pavadinimas</th>
+                <td>{{ bankInfo.institutionName }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Padalinio pavadinimas</th>
+                    <td>{{ isBranchNameNameEmpty() }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Identifikacinis numeris</th>
+                    <td>{{ bankInfo.nationalId }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">BIC numeris</th>
+                    <td>{{ bankInfo.biccode }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Adresas</th>
+                    <td>{{ bankInfo.address }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Miestas</th>
+                    <td>{{ bankInfo.city }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Šalis</th>
+                    <td>{{ bankInfo.country }}</td>
+                </tr>
+                <tr>
+                    <th style="width:30%" scope="row">Pašto kodas</th>
+                    <td>{{ bankInfo.zipCode }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
